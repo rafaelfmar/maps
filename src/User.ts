@@ -1,6 +1,8 @@
 import faker from "faker";
 
-export class User {
+import { MarkerData } from "./CustomMap";
+
+export class User implements MarkerData {
   name: string;
   location: {
     latitude: number;

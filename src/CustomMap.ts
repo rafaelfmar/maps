@@ -1,4 +1,4 @@
-interface MarkerData {
+export interface MarkerData {
   location: {
     latitude: number;
     longitude: number;

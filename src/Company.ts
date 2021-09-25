@@ -1,6 +1,8 @@
 import faker from "faker";
 
-export class Company {
+import { MarkerData } from "./CustomMap";
+
+export class Company implements MarkerData {
   name: string;
   catchPhrase: string;
   location: {
