@@ -1,8 +1,9 @@
-interface Coordinates {
+interface MarkerData {
   location: {
     latitude: number;
     longitude: number;
   };
+  markerContent(): string;
 }
 
 export class CustomMap {
@@ -18,13 +19,21 @@ export class CustomMap {
     });
   }
 
-  addMarker(resource: Coordinates): void {
-    new google.maps.Marker({
+  addMarker(resource: MarkerData): void {
+    const marker = new google.maps.Marker({
       map: this.googleMap,
       position: {
         lat: resource.location.latitude,
         lng: resource.location.longitude,
       },
+    });
+
+    const infoWindow = new google.maps.InfoWindow({
+      content: resource.markerContent(),
+    });
+
+    marker.addListener("click", () => {
+      infoWindow.open(this.googleMap, marker);
     });
   }
 }
